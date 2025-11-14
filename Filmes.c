@@ -16,6 +16,7 @@ int main() {
         "AI - Inteligencia Artificial"
     }, assistidos[11][30];
     int i, escolher, filmsEscolhidos = 0, seeList;
+    int jaAssistiu, j, verificar;
 
     while (1) {
         for (i = 0; i < 11;i++) {
@@ -44,10 +45,30 @@ int main() {
             }
                 
         } else if (escolher > 0 && escolher < 11) {
-            strcpy(assistidos[filmsEscolhidos], filmsList[escolher]);
-            filmsEscolhidos++;
+            if (filmsEscolhidos == 10) {
+                printf("limite atingido!\n\n");
+            } else {
+
+                verificar = 0;
+
+                for (i = 0; i < filmsEscolhidos;i++) {
+                    if (strcmp(assistidos[i], filmsList[escolher]) == 0) {
+                            verificar = 1;
+                            break;
+                    }
+                }
+
+                if (verificar) {
+                    printf("Você já assistiu esse filme\n\n");
+                } else {
+                    strcpy(assistidos[filmsEscolhidos], filmsList[escolher]);
+                    filmsEscolhidos++;
+                }
+
+                
+            }
         } else {
-            return main();
+            printf("Opcao Invalida\n\n");
         }
     }
 
